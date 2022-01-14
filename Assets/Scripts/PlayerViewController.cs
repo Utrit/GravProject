@@ -5,18 +5,16 @@ using UnityEngine;
 public class PlayerViewController : MonoBehaviour
 {
     
-    [SerializeField] private float _MouseSensivity = 2f;
-    [SerializeField] private bool _VerticalyInvert = true;
-    private Vector2 _LastMousePos;
-    private Transform _Neck;
+    [SerializeField] private float _mouseSensivity = 2f;
+    [SerializeField] private bool _verticalyInvert = true;
+    private Transform _neck;
     private Transform _Head;
     private float _HeadElevation = 0;
 
     void Start()
     {
-        _LastMousePos = new Vector2(0, 0);
-        _Neck = transform.GetChild(0);
-        _Head = _Neck.GetChild(0);
+        _neck = transform.GetChild(0);
+        _Head = _neck.GetChild(0);
     }
 
     void Update()
@@ -25,9 +23,9 @@ public class PlayerViewController : MonoBehaviour
         LockCursor();
     }
 
-    public void LockCursor()
+    private void LockCursor()
     {
-        if (Input.GetKeyDown("escape"))
+        if (Input.GetButtonDown("Cancel"))
         {
             Debug.Log("Pressed");
             Cursor.lockState = (Cursor.lockState == CursorLockMode.Locked ? CursorLockMode.None : CursorLockMode.Locked);
@@ -35,17 +33,17 @@ public class PlayerViewController : MonoBehaviour
         }
     }
 
-    public void MoveCameraView()
+    private void MoveCameraView()
     {
         if (Cursor.lockState == CursorLockMode.Locked)
         {
-            float MouseDX = Input.GetAxis("Mouse X") * _MouseSensivity;
-            float MouseDY = Input.GetAxis("Mouse Y") * _MouseSensivity * (_VerticalyInvert ? -1:1);
-            _Neck.Rotate(new Vector3(0, MouseDX, 0));
-            if (_HeadElevation + MouseDY > -90 && _HeadElevation + MouseDY < 90)
+            float mouseDX = Input.GetAxis("Mouse X") * _mouseSensivity;
+            float mouseDY = Input.GetAxis("Mouse Y") * _mouseSensivity * (_verticalyInvert ? -1:1);
+            _neck.Rotate(new Vector3(0, mouseDX, 0));
+            if (_HeadElevation + mouseDY > -90 && _HeadElevation + mouseDY < 90)
             {
-                _Head.Rotate(new Vector3(MouseDY, 0, 0));
-                _HeadElevation += MouseDY;
+                _Head.Rotate(new Vector3(mouseDY, 0, 0));
+                _HeadElevation += mouseDY;
             }
         }
     }
