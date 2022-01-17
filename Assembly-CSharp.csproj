@@ -57,6 +57,7 @@
     <Compile Include="Assets\Scripts\DoorOpener.cs" />
     <Compile Include="Assets\Scripts\GravityFieldNormalizer.cs" />
     <Compile Include="Assets\Scripts\ILogicElement.cs" />
+    <Compile Include="Assets\Scripts\NonecludianSurface.cs" />
     <Compile Include="Assets\Scripts\PlayerCarryController.cs" />
     <Compile Include="Assets\Scripts\PlayerGravityController.cs" />
     <Compile Include="Assets\Scripts\PlayerMoveController.cs" />
@@ -77,6 +78,7 @@
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\Shaders\NonEcludianShader.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
