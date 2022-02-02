@@ -8,6 +8,9 @@ public class NonecludianSurface : MonoBehaviour
     private Camera _otherCamera;
     private RenderTexture _surfaceTexture;
     private MeshRenderer _meshRenderer;
+
+    public GameObject OtherSurface => _otherSurface;
+
     void Start()
     {
         
@@ -18,18 +21,17 @@ public class NonecludianSurface : MonoBehaviour
         _meshRenderer.material.mainTexture = _otherCamera.targetTexture;
     }
 
-    // Update is called once per frame
     void LateUpdate()
     {
-        
-        Vector3 LocalCoordsPosition = transform.InverseTransformPoint(Camera.main.transform.position);
-        LocalCoordsPosition = new Vector3(-LocalCoordsPosition.x, LocalCoordsPosition.y, -LocalCoordsPosition.z);
-        _otherCamera.transform.localPosition = LocalCoordsPosition;
+        var localToWorldCamMatrix = Camera.main.transform.localToWorldMatrix;
+        localToWorldCamMatrix = _otherSurface.transform.localToWorldMatrix * transform.worldToLocalMatrix * localToWorldCamMatrix;
+        //float scaleDiff = (_otherSurface.transform.localScale-transform.localScale).magnitude;
+        Vector3 renderPosition = localToWorldCamMatrix.GetColumn(3);
+        //renderPosition *=scaleDiff;
+        Quaternion renderRotation = localToWorldCamMatrix.rotation;
 
-        Quaternion differenceRotation = transform.rotation * Quaternion.Inverse(_otherSurface.transform.rotation * Quaternion.Euler(0, 180, 0));
-        _otherCamera.transform.rotation = differenceRotation * Camera.main.transform.rotation;
+        _otherCamera.transform.SetPositionAndRotation(renderPosition, renderRotation);
 
-        //_otherCamera.nearClipPlane = LocalCoordsPosition.magnitude;
         ObliqueNearClip();
     }
     void ObliqueNearClip()
@@ -40,7 +42,7 @@ public class NonecludianSurface : MonoBehaviour
         Vector3 camSpacePos = _otherCamera.worldToCameraMatrix.MultiplyPoint3x4(clipPlane.position);
         Vector3 camSpaceNormal = _otherCamera.worldToCameraMatrix.MultiplyVector(clipPlane.forward) * direction;
         float camDistance = -Vector3.Dot(camSpacePos, camSpaceNormal);
-        Vector4 clipPlaneCameraSpace = new Vector4(camSpaceNormal.x, camSpaceNormal.y, camSpaceNormal.z, camDistance);
+        Vector4 clipPlaneCameraSpace = new Vector4(camSpaceNormal.x, camSpaceNormal.y, camSpaceNormal.z, camDistance+0.25f);
 
         _otherCamera.projectionMatrix = Camera.main.CalculateObliqueMatrix(clipPlaneCameraSpace);
     }

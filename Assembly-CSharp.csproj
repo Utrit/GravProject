@@ -55,17 +55,20 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\BasicLogicElement.cs" />
     <Compile Include="Assets\Scripts\DoorOpener.cs" />
+    <Compile Include="Assets\Scripts\EditorBaker.cs" />
     <Compile Include="Assets\Scripts\GravityFieldNormalizer.cs" />
     <Compile Include="Assets\Scripts\ILogicElement.cs" />
     <Compile Include="Assets\Scripts\NonecludianSurface.cs" />
-    <Compile Include="Assets\Scripts\PlayerCarryController.cs" />
-    <Compile Include="Assets\Scripts\PlayerGravityController.cs" />
-    <Compile Include="Assets\Scripts\PlayerMoveController.cs" />
-    <Compile Include="Assets\Scripts\PlayerPushButtonInteract.cs" />
-    <Compile Include="Assets\Scripts\PlayerViewController.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\PlayerCarryController.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\PlayerGravityController.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\PlayerMoveController.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\PlayerPushButtonInteract.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\PlayerViewController.cs" />
     <Compile Include="Assets\Scripts\PressurePlate.cs" />
     <Compile Include="Assets\Scripts\PushButton.cs" />
     <Compile Include="Assets\Scripts\SpawnerTube.cs" />
+    <Compile Include="Assets\Scripts\SurfaceTelepor.cs" />
+    <Compile Include="Assets\Scripts\SurfaceTravaler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

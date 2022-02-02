@@ -8,7 +8,7 @@
 	{
 		Tags { "RenderType" = "Opaque" }
 		LOD 100
-
+		cull front
 		Pass
 		{
 			CGPROGRAM
@@ -16,7 +16,6 @@
 			#pragma fragment frag
 			// make fog work
 			#pragma multi_compile_fog
-			#pragma cull off
 			#include "UnityCG.cginc"
 
 			struct appdata
