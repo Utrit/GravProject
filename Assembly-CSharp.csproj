@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <LangVersion>latest</LangVersion>
+    <LangVersion>7.3</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -47,28 +47,42 @@
   <PropertyGroup>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <UnityProjectGenerator>Package</UnityProjectGenerator>
-    <UnityProjectGeneratorVersion>2.0.12</UnityProjectGeneratorVersion>
+    <UnityProjectGeneratorVersion>2.0.14</UnityProjectGeneratorVersion>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>2019.4.33f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\BasicLogicElement.cs" />
-    <Compile Include="Assets\Scripts\DoorOpener.cs" />
-    <Compile Include="Assets\Scripts\EditorBaker.cs" />
-    <Compile Include="Assets\Scripts\GravityFieldNormalizer.cs" />
-    <Compile Include="Assets\Scripts\ILogicElement.cs" />
-    <Compile Include="Assets\Scripts\NonecludianSurface.cs" />
+    <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Assets\DOTween\Modules\DOTweenModuleAudio.cs" />
+    <Compile Include="Assets\DOTween\Modules\DOTweenModuleEPOOutline.cs" />
+    <Compile Include="Assets\DOTween\Modules\DOTweenModulePhysics.cs" />
+    <Compile Include="Assets\DOTween\Modules\DOTweenModulePhysics2D.cs" />
+    <Compile Include="Assets\DOTween\Modules\DOTweenModuleSprite.cs" />
+    <Compile Include="Assets\DOTween\Modules\DOTweenModuleUI.cs" />
+    <Compile Include="Assets\DOTween\Modules\DOTweenModuleUnityVersion.cs" />
+    <Compile Include="Assets\DOTween\Modules\DOTweenModuleUtils.cs" />
+    <Compile Include="Assets\Scripts\Gravity\ArtifiacalGravinty.cs" />
+    <Compile Include="Assets\Scripts\Gravity\GravityFieldNormalizer.cs" />
+    <Compile Include="Assets\Scripts\LevelTools\EditorBaker.cs" />
+    <Compile Include="Assets\Scripts\LevelTools\LevelTrigger.cs" />
+    <Compile Include="Assets\Scripts\LevelTools\MainMenu.cs" />
+    <Compile Include="Assets\Scripts\LevelTools\SceneLoader.cs" />
+    <Compile Include="Assets\Scripts\LogicElements\BasicLogicElement.cs" />
+    <Compile Include="Assets\Scripts\LogicElements\DoorOpener.cs" />
+    <Compile Include="Assets\Scripts\LogicElements\PressurePlate.cs" />
+    <Compile Include="Assets\Scripts\LogicElements\PushButton.cs" />
+    <Compile Include="Assets\Scripts\LogicElements\SpawnerTube.cs" />
+    <Compile Include="Assets\Scripts\Nonecludian\NonecludianSurface.cs" />
+    <Compile Include="Assets\Scripts\Nonecludian\SurfaceTelepor.cs" />
+    <Compile Include="Assets\Scripts\Nonecludian\SurfaceTravaler.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerCarryController.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerGravityController.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerMoveController.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerPushButtonInteract.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerViewController.cs" />
-    <Compile Include="Assets\Scripts\PressurePlate.cs" />
-    <Compile Include="Assets\Scripts\PushButton.cs" />
-    <Compile Include="Assets\Scripts\SpawnerTube.cs" />
-    <Compile Include="Assets\Scripts\SurfaceTelepor.cs" />
-    <Compile Include="Assets\Scripts\SurfaceTravaler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -79,6 +93,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\DOTween\DOTween.XML" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
     <None Include="Assets\Shaders\NonEcludianShader.shader" />
@@ -86,12 +101,14 @@
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\DOTween\readme.txt" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\DOTween\DOTween.dll" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
   </ItemGroup>
   <ItemGroup>
@@ -277,6 +294,9 @@
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2019.4.33f1\Editor\Data\Managed\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>Assets\DOTween\DOTween.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2019.4.33f1\Editor\Data\NetStandard\ref\2.0.0\netstandard.dll</HintPath>
