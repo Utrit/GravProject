@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class PlayerViewController : MonoBehaviour
 {
-    
     [SerializeField] private float _mouseSensivity = 2f;
     [SerializeField] private bool _verticalyInvert = true;
+    private PlayerContext _playerContext;
     private Transform _neck;
     private Transform _head;
     private float _headElevation = 0;
 
     void Start()
     {
-        _neck = transform.GetChild(0);
-        _head = _neck.GetChild(0);
+        _playerContext = GetComponent<PlayerContext>();
+        _neck = _playerContext.Neck;
+        _head = _playerContext.Head;
     }
 
     void Update()
@@ -27,9 +28,15 @@ public class PlayerViewController : MonoBehaviour
     {
         if (Input.GetButtonDown("Cancel"))
         {
-            Debug.Log("Pressed");
             Cursor.lockState = (Cursor.lockState == CursorLockMode.Locked ? CursorLockMode.None : CursorLockMode.Locked);
-            Debug.Log(Cursor.lockState);
+            if (Cursor.lockState == CursorLockMode.Locked)
+            {
+                _playerContext.PlayerMenu.HideButtons();
+            }
+            else
+            {
+                _playerContext.PlayerMenu.ShowButtons();
+            }
         }
     }
 

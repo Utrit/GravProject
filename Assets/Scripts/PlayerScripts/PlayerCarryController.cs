@@ -6,6 +6,7 @@ public class PlayerCarryController : MonoBehaviour
 {
     [SerializeField] private float _gravityAlingSpeed = 360;
     [SerializeField] private int _cubeLayer = 8;
+    private PlayerContext _playerContext;
     private Transform _neck;
     private Transform _head;
     private Ray _lookRay;
@@ -15,8 +16,9 @@ public class PlayerCarryController : MonoBehaviour
     public Rigidbody CarryObject => _carrydObject;
     void Start()
     {
-        _neck = transform.GetChild(0);
-        _head = _neck.GetChild(0);
+        _playerContext = GetComponent<PlayerContext>();
+        _neck = _playerContext.Neck;
+        _head = _playerContext.Head;
         _cubeLayer = 1 << _cubeLayer;
     }
 

@@ -9,10 +9,12 @@ public class PlayerPushButtonInteract : MonoBehaviour
     private Ray _lookRay;
     private RaycastHit _lookHit;
     private Rigidbody _carrydObject;
+    private PlayerContext _playerContext;
     void Start()
     {
-        _neck = transform.GetChild(0);
-        _head = _neck.GetChild(0);
+        _playerContext = GetComponent<PlayerContext>();
+        _neck = _playerContext.Neck;
+        _head = _playerContext.Head;
     }
 
     void Update()

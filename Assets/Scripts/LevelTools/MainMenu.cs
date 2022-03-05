@@ -6,10 +6,11 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private SceneLoader loader;
-    [SerializeField] private GameObject buttonReference;
-    [SerializeField] private Transform buttonsFolder;
-    private Dictionary<string, string> levelNames = new Dictionary<string, string>()
+    [SerializeField] private SceneLoader _loader;
+    [SerializeField] private GameObject _levelButtonPerfab;
+    [SerializeField] private Transform _levelButtonsFolder;
+    [SerializeField] private Transform _menuButtonsFolder;
+    private Dictionary<string, string> _levelNames = new Dictionary<string, string>()
     {
         {"Assets/ScenesToBuild/0MainMenu.unity",    "Меню"},
         {"Assets/ScenesToBuild/LevelEditor.unity",  "Редактор"},
@@ -18,15 +19,14 @@ public class MainMenu : MonoBehaviour
     };
     void Start()
     {
-        for(int i= 0; i < SceneManager.sceneCountInBuildSettings; i++)
+        for(int i= 1; i < SceneManager.sceneCountInBuildSettings; i++)
         {
             string sceneName = SceneUtility.GetScenePathByBuildIndex(i);
-            GameObject button = Instantiate(buttonReference,buttonsFolder);
+            GameObject button = Instantiate(_levelButtonPerfab, _levelButtonsFolder);
             RectTransform rectTransform = button.GetComponent<RectTransform>();
-            rectTransform.anchoredPosition = new Vector3(0, i * rectTransform.sizeDelta.y, 0);
-            if (levelNames.ContainsKey(sceneName))
+            if (_levelNames.ContainsKey(sceneName))
             {
-                button.GetComponentInChildren<Text>().text = levelNames[sceneName];
+                button.GetComponentInChildren<Text>().text = _levelNames[sceneName];
             }
             else
             {
@@ -36,14 +36,27 @@ public class MainMenu : MonoBehaviour
             button.GetComponentInChildren<Button>().onClick.AddListener(()=>LoadScene(sceneName));
         }
     }
-
-    
-    void Update()
+    private void HideAllButtons()
     {
-        
+        _levelButtonsFolder.gameObject.SetActive(false);
+        _menuButtonsFolder.gameObject.SetActive(false);
+    }
+    public void ShowLevelButtons()
+    {
+        HideAllButtons();
+        _levelButtonsFolder.gameObject.SetActive(true);
+    }
+    public void ShowMenuButtons()
+    {
+        HideAllButtons();
+        _menuButtonsFolder.gameObject.SetActive(true);
+    }
+    public void ExitGame()
+    {
+        Application.Quit();
     }
     public void LoadScene(string sceneName)
     {
-        loader.LoadScene(sceneName);
+        _loader.LoadScene(sceneName);
     }
 }

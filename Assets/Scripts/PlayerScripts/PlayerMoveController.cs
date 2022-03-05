@@ -9,6 +9,7 @@ public class PlayerMoveController : MonoBehaviour
     [SerializeField] private float _jumpPower = 100;
     [SerializeField] private float _maxSpeed = 25;
     [SerializeField] [Range(0,1)] private float _friction = 0.1f;
+    private PlayerContext _playerContext;
     private Transform _neck;
     private Transform _legs;
     private Ray _groundRay;
@@ -18,8 +19,10 @@ public class PlayerMoveController : MonoBehaviour
     private bool _grounded;
     void Start()
     {
-        _legs = transform.GetChild(1);
-        _neck = transform.GetChild(0);
+
+        _playerContext = GetComponent<PlayerContext>();
+        _neck = _playerContext.Neck;
+        _legs = _playerContext.Legs;
         _rigidBody = GetComponent<Rigidbody>();
     }
 
@@ -45,7 +48,7 @@ public class PlayerMoveController : MonoBehaviour
 
             _moveDirection += _neck.forward * Input.GetAxis("ForwardBackward");
             _moveDirection += _neck.right * Input.GetAxis("RightLeft");
-            _moveDirection = _moveDirection * (_grounded ? _speedAcceleration : _airSpeedAcceleration) * Time.deltaTime;
+            _moveDirection = _moveDirection.normalized * (_grounded ? _speedAcceleration : _airSpeedAcceleration) * Time.deltaTime;
             if (_grounded) _rigidBody.AddForce(_groundHit.normal * _jumpPower * Input.GetAxis("Jump"));
         }
         _rigidBody.AddForce(_moveDirection);

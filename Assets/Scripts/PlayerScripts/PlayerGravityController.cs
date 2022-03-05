@@ -6,20 +6,19 @@ public class PlayerGravityController : MonoBehaviour
 {
     [SerializeField] private float _gravityAlingSpeed = 360;
     [SerializeField] private int _gravitySurfaceLayer = 9;
-    private Transform _neck;
-    private Transform _Head;
+    private PlayerContext _playerContext;
+    private Transform _head;
     private Ray _lookRay;
     private RaycastHit _lookHit;
     private Quaternion _TargetRotation;
-    ArtifiacalGravinty selfGravity;
-    PlayerCarryController carryInfo;
+    private PlayerCarryController _carryInfo;
 
     void Start()
     {
-        _neck = transform.GetChild(0);
-        _Head = _neck.GetChild(0);
+        _playerContext = GetComponent<PlayerContext>();
+        _head = _playerContext.Head;
         _gravitySurfaceLayer = (1 << _gravitySurfaceLayer) + (1 << 10);
-        carryInfo = GetComponent<PlayerCarryController>();
+        _carryInfo = GetComponent<PlayerCarryController>();
     }
 
     void Update()
@@ -35,19 +34,16 @@ public class PlayerGravityController : MonoBehaviour
             if (Input.GetButtonDown("Fire1"))
             {
                 ChangeGravity(1);
-                Debug.DrawRay(_Head.position, _Head.forward * 10, Color.red, 10f);
+                Debug.DrawRay(_head.position, _head.forward * 10, Color.red, 10f);
                 Debug.DrawRay(_lookHit.point, _lookHit.normal * 10, Color.green, 10f);
             }
             if (Input.GetButtonDown("Fire2"))
             {
                 ChangeGravity(-1);
-                Debug.DrawRay(_Head.position, _Head.forward * 10, Color.red, 10f);
+                Debug.DrawRay(_head.position, _head.forward * 10, Color.red, 10f);
                 Debug.DrawRay(_lookHit.point, _lookHit.normal * 10, Color.yellow, 10f);
             }
         }
-        
-        //transform.rotation = Quaternion.Slerp(transform.rotation, _TargetRotation, 0.01f);
-        //transform.Rotate(Vector3.Cross(Physics.gravity, transform.up), Vector3.Dot(transform.forward,Physics.gravity)*Time.deltaTime*10);
     }
 
     private void AlingCurGravity()
@@ -58,14 +54,14 @@ public class PlayerGravityController : MonoBehaviour
 
     private void ChangeGravity(int direction)
     {
-        _lookRay = new Ray(_Head.position, _Head.forward);
+        _lookRay = new Ray(_head.position, _head.forward);
         if (Physics.Raycast(_lookRay, out _lookHit, 1000, _gravitySurfaceLayer))
         {
             if (_lookHit.collider.gameObject.layer == 10) return;
-            if (carryInfo.isCarryng())
+            if (_carryInfo.isCarryng())
             {
-                carryInfo.CarryObject.GetComponent<ArtifiacalGravinty>().ChangeGravityVector(direction * -_lookHit.normal.normalized * 9.8f);
-                carryInfo.DropObject();
+                _carryInfo.CarryObject.GetComponent<ArtifiacalGravinty>().ChangeGravityVector(direction * -_lookHit.normal.normalized * 9.8f);
+                _carryInfo.DropObject();
             }
             else
             {
