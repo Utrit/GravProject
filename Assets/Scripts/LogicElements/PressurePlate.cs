@@ -14,7 +14,7 @@ public class PressurePlate : BasicLogicElement
         _animationObject = transform.GetChild(0);
         _initPosition = _animationObject.position;
         _targetPosition = _initPosition;
-        _pressedPosition = _animationObject.position - _animationObject.up*0.15f;
+        _pressedPosition = _animationObject.position - _animationObject.up*0.05f;
     }
     private void OnTriggerStay(Collider other)
     {

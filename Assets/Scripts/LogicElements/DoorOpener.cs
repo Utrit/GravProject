@@ -19,8 +19,8 @@ public class DoorOpener : MonoBehaviour
         _rightDoor = transform.GetChild(1);
         _leftDoorClosePos = _leftDoor.position;
         _rightDoorClosePos = _rightDoor.position;
-        _leftDoorOpenPos = _leftDoor.position + _leftDoor.right * 1.5f;
-        _rightDoorOpenPos = _rightDoor.position - _rightDoor.right * 1.5f;
+        _leftDoorOpenPos = _leftDoor.position - _leftDoor.up * 1.5f;
+        _rightDoorOpenPos = _rightDoor.position - _rightDoor.up * 1.5f;
     }
 
     // Update is called once per frame

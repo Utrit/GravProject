@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/ScenesToBuild/0MainMenu.unity
+- path: Assets/ScenesToBuild/TestingChamber.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
