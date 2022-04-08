@@ -8,12 +8,14 @@ public class PushButton : BasicLogicElement
     Vector3 _downButtonPos;
     Vector3 _upButtonPos;
     Transform _button;
+    private ColorChanger _colorChanger;
     // Start is called before the first frame update
     void Start()
     {
         _button = transform.GetChild(0).GetChild(0);
         _upButtonPos = _button.position;
-        _downButtonPos = _button.position - _button.up * 0.1f;
+        _downButtonPos = _button.position - _button.forward * 0.08f;
+        _colorChanger = GetComponent<ColorChanger>();
     }
 
     // Update is called once per frame
@@ -27,12 +29,13 @@ public class PushButton : BasicLogicElement
     }
     public void PushDown()
     {
-        Debug.Log("PushDown");
         _state = true;
+        _colorChanger.TurnOn();
         _pushTime = Time.timeSinceLevelLoad;
     }
     private void PushUp()
     {
         _state = false;
+        _colorChanger.TurnOff();
     }
 }

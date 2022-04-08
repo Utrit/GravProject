@@ -12,6 +12,7 @@ public class DoorOpener : MonoBehaviour
     private Transform _leftDoor;
     private Transform _rightDoor;
     private bool _open;
+    private ColorChanger _colorChanger;
     [SerializeField] private List<BasicLogicElement> _logicInputs;
     void Start()
     {
@@ -19,8 +20,9 @@ public class DoorOpener : MonoBehaviour
         _rightDoor = transform.GetChild(1);
         _leftDoorClosePos = _leftDoor.position;
         _rightDoorClosePos = _rightDoor.position;
-        _leftDoorOpenPos = _leftDoor.position - _leftDoor.up * 1.5f;
-        _rightDoorOpenPos = _rightDoor.position - _rightDoor.up * 1.5f;
+        _leftDoorOpenPos = _leftDoor.position - _leftDoor.up * 1.3f;
+        _rightDoorOpenPos = _rightDoor.position - _rightDoor.up * 1.3f;
+        _colorChanger = GetComponent<ColorChanger>();
     }
 
     // Update is called once per frame
@@ -31,11 +33,13 @@ public class DoorOpener : MonoBehaviour
         {
             _leftDoor.position = Vector3.Slerp(_leftDoor.position, _leftDoorOpenPos, 1f * Time.deltaTime);
             _rightDoor.position = Vector3.Slerp(_rightDoor.position, _rightDoorOpenPos, 1f * Time.deltaTime);
+            _colorChanger.TurnOn();
         }
         else
         {
             _leftDoor.position = Vector3.Slerp(_leftDoor.position, _leftDoorClosePos, 3f * Time.deltaTime);
             _rightDoor.position = Vector3.Slerp(_rightDoor.position, _rightDoorClosePos, 3f * Time.deltaTime);
+            _colorChanger.TurnOff();
         }
     }
     private void CheckInputs()
