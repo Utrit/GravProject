@@ -16,6 +16,9 @@ public class MainMenu : MonoBehaviour
         {"Assets/ScenesToBuild/LevelEditor.unity",  "Редактор"},
         {"Assets/ScenesToBuild/SampleScene.unity",  "ПСцена"},
         {"Assets/ScenesToBuild/Test.unity",         "Тест"},
+        {"Assets/ScenesToBuild/Room00.unity",         "Room00"},
+        {"Assets/ScenesToBuild/Room01.unity",         "Room01"},
+        {"Assets/ScenesToBuild/Room02.unity",         "Room02"},
     };
     void Start()
     {

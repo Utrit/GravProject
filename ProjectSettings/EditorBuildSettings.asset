@@ -9,12 +9,12 @@ EditorBuildSettings:
     path: Assets/ScenesToBuild/0MainMenu.unity
     guid: a4b3c14eece169240a3ac70ba16f6242
   - enabled: 1
-    path: Assets/ScenesToBuild/LevelEditor.unity
-    guid: bdff713e5b3a0ea4f911f13082fa8606
+    path: Assets/ScenesToBuild/Room00.unity
+    guid: fb5f8cb4ca6befb43937cf95052cc783
   - enabled: 1
-    path: Assets/ScenesToBuild/SampleScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    path: Assets/ScenesToBuild/Room01.unity
+    guid: c8ad5c59ef1e4fb45a3957173770d0b0
   - enabled: 1
-    path: Assets/ScenesToBuild/Test.unity
-    guid: a683a555a9f797848b56c8e28dea92c5
+    path: Assets/ScenesToBuild/Room02.unity
+    guid: c47483de938629540be94a8d33f30657
   m_configObjects: {}

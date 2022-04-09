@@ -9,6 +9,8 @@ public class PlayerMoveController : MonoBehaviour
     [SerializeField] private float _jumpPower = 100;
     [SerializeField] private float _maxSpeed = 25;
     [SerializeField] [Range(0,1)] private float _friction = 0.1f;
+    private float _sphereCastRadius = 0.2f;
+    private float _sphereCastDistance = 0.1f;
     private PlayerContext _playerContext;
     private Transform _neck;
     private Transform _legs;
@@ -33,7 +35,7 @@ public class PlayerMoveController : MonoBehaviour
     void OnCollisionStay(Collision collision)
     {
         _groundRay = new Ray(_legs.position, -_legs.up);
-        _grounded = Physics.Raycast(_groundRay, out _groundHit, 0.5f);
+        _grounded = Physics.SphereCast(_legs.position+_legs.up*_sphereCastRadius, _sphereCastRadius, -_legs.up, out _groundHit,_sphereCastDistance);
     }
     private void OnCollisionExit(Collision collision)
     {

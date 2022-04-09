@@ -81,6 +81,7 @@
     <Compile Include="Assets\Scripts\Nonecludian\SurfaceTravaler.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerCarryController.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerContext.cs" />
+    <Compile Include="Assets\Scripts\PlayerScripts\PlayerCuros.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerGravityController.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerMenu.cs" />
     <Compile Include="Assets\Scripts\PlayerScripts\PlayerMoveController.cs" />

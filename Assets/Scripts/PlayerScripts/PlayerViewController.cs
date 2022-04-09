@@ -16,6 +16,7 @@ public class PlayerViewController : MonoBehaviour
         _playerContext = GetComponent<PlayerContext>();
         _neck = _playerContext.Neck;
         _head = _playerContext.Head;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     void Update()
