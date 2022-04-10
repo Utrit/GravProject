@@ -895,9 +895,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 851de9a7f8955ca4db97ea3cc6d51f3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cursorMesh: {fileID: -2432090755550338912, guid: 321a4b034a373674da5009c6cedacc71,
+  _cursorMesh: {fileID: -2432090755550338912, guid: b729b21eeb42ea5489e6e8d699353e93,
     type: 3}
-  _cursorMaterial: {fileID: 2100000, guid: 29d6eaf58b52b41449336078790efd50, type: 2}
+  _cursorMaterial: {fileID: 2100000, guid: 47a0010e543278549a8788dc6dc8b951, type: 2}
   _cursorLayer: 9
 --- !u!1 &5159855134288765687
 GameObject:
