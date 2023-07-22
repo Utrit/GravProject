@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 [RequireComponent(typeof(MeshCollider))]
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(MeshRenderer))]
@@ -11,7 +9,6 @@ public class EditorBaker : MonoBehaviour
     static int cubeLength = 100;
     static float planeSize = 3f;
     private bool[,,] rawMapSpace = new bool[cubeLength, cubeLength, cubeLength];
-    Random rnd = new Random();
     // Start is called before the first frame update
     void Start()
     {
